@@ -4,11 +4,11 @@ function getComputerChoice() {
 
   switch (random) {
     case 0:
-      return "Rock";
+      return "rock";
     case 1:
-      return "Paper";
+      return "paper";
     default:
-      return "Scissors";
+      return "scissors";
   }
 }
 
@@ -22,3 +22,7 @@ function getHumanChoice(userChoice) {
 const userChoice = prompt("Enter your choice here:");
 
 console.log(getHumanChoice(userChoice));
+
+//For tracking player's score
+let humanScore = 0;
+let computerScore = 0;
