@@ -1,7 +1,3 @@
-//For tracking player's score
-let humanScore = 0;
-let computerScore = 0;
-
 //This will get computer choice randomly
 function getComputerChoice() {
   const random = Math.floor(Math.random() * 3);
@@ -25,29 +21,45 @@ function getHumanChoice() {
 
 // console.log(getHumanChoice(userChoice));
 
-// This function is to get choices from function getHumanChoice and getComputerChoice
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
+function playGame() {
+  //For tracking player's score
+  let humanScore = 0;
+  let computerScore = 0;
 
-  let result;
+  // This function is to get choices from function getHumanChoice and getComputerChoice
+  function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
 
-  if (humanChoice === computerChoice) {
-    result = "Draw!";
-  } else if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
-  ) {
-    console.log((humanScore += 1));
-    result = `You win! ${humanChoice} beats ${computerChoice}`;
-  } else {
-    console.log((computerScore += 1));
-    result = `You lose! ${computerChoice} beats ${humanChoice}`;
+    let result;
+
+    if (humanChoice === computerChoice) {
+      result = "Draw!";
+    } else if (
+      (humanChoice === "rock" && computerChoice === "scissors") ||
+      (humanChoice === "paper" && computerChoice === "rock") ||
+      (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+      humanScore += 1;
+      result = `You win! ${humanChoice} beats ${computerChoice}`;
+    } else {
+      computerScore += 1;
+      result = `You lose! ${computerChoice} beats ${humanChoice}`;
+    }
+
+    return `You: ${humanChoice} | Computer: ${computerChoice} | Result: ${result}`;
   }
 
-  return `You: ${humanChoice} | Computer: ${computerChoice} | Result: ${result}`;
-}
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection));
+    // ✅ pass the actual variables you created
+    const roundSummary = playRound(humanSelection, computerSelection);
+
+    console.log(roundSummary);
+  }
+  // ✅ return something so playGame() doesn't print undefined
+  return `Score -> You: ${humanScore} | Computer: ${computerScore}`;
+}
+
+console.log(playGame());
