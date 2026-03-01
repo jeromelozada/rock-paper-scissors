@@ -53,12 +53,11 @@ function playGame() {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
-    // ✅ pass the actual variables you created
     const roundSummary = playRound(humanSelection, computerSelection);
 
     console.log(roundSummary);
   }
-  // ✅ return something so playGame() doesn't print undefined
+
   return `Score -> You: ${humanScore} | Computer: ${computerScore}`;
 }
 
