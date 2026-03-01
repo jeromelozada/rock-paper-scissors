@@ -1,8 +1,7 @@
-//This will get computer choice randomly
 function getComputerChoice() {
-  const random = Math.floor(Math.random() * 3);
+  const randomNumber = Math.floor(Math.random() * 3);
 
-  switch (random) {
+  switch (randomNumber) {
     case 0:
       return "rock";
     case 1:
@@ -11,22 +10,16 @@ function getComputerChoice() {
       return "scissors";
   }
 }
-// console.log(getComputerChoice());
 
-//This will get whatever the user input
 function getHumanChoice() {
-  const userChoice = prompt("Enter your choice here:");
-  return userChoice;
+  const humanChoice = prompt("Enter your choice here:");
+  return humanChoice;
 }
 
-// console.log(getHumanChoice(userChoice));
-
 function playGame() {
-  //For tracking player's score
   let humanScore = 0;
   let computerScore = 0;
 
-  // This function is to get choices from function getHumanChoice and getComputerChoice
   function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
 
@@ -49,6 +42,7 @@ function playGame() {
     return `You: ${humanChoice} | Computer: ${computerChoice} | Result: ${result}`;
   }
 
+  // Play exactly 5 rounds.
   for (let i = 0; i < 5; i++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
